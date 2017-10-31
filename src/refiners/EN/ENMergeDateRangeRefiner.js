@@ -6,7 +6,7 @@ var Refiner = require('../refiner').Refiner;
 exports.Refiner = function ENMergeDateRangeRefiner() {
     Refiner.call(this);
 
-    this.pattern = function () { return /^\s*(to|\-)\s*$/i };
+    this.pattern = function () { return /^\s*(till|to|\-)\s*$/i };
 
     this.refine = function(text, results, opt) {
 
