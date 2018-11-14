@@ -29,7 +29,7 @@ var PATTERN = new RegExp('(\\W|^)' +
     '(?:-|\/|\\s*,?\\s*)' +
     '(([0-9]{1,2})(?:st|nd|rd|th)?|' + util.ORDINAL_WORDS_PATTERN +')\\s*' +
     '(?:' +
-        '(?:to|\\-)\\s*' +
+        '(?:to|until|upto|till|\\-)\\s*' +
         '(([0-9]{1,2})(?:st|nd|rd|th)?| ' + util.ORDINAL_WORDS_PATTERN + ')\\s*' +
     ')?' +
     '(?:' +
