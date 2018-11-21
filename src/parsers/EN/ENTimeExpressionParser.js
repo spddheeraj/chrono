@@ -9,7 +9,7 @@ var ParsedComponents = require('../../result').ParsedComponents;
 
 var FIRST_REG_PATTERN  = new RegExp("(^|\\s|T)" +
     "(?:(?:at|from)\\s*)??" + 
-    "(\\d{1,4}|noon|midnight)" + 
+    "(\\d{1,4}|noon|midnight|evening)" + 
     "(?:" + 
         "(?:\\.|\\:|\\：)(\\d{1,2})" + 
         "(?:" + 
@@ -77,6 +77,8 @@ exports.Parser = function ENTimeExpressionParser(){
         } else if (match[HOUR_GROUP].toLowerCase() == "midnight") {
             meridiem = 0; 
             hour = 0;
+        } else if (match[HOUR_GROUP].toLowerCase() == "evening") {
+            match[AM_PM_HOUR_GROUP] = "pm";
         } else {
             hour = parseInt(match[HOUR_GROUP]);
         }
