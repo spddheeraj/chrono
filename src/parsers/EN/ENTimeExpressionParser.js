@@ -8,8 +8,10 @@ var ParsedResult = require('../../result').ParsedResult;
 var ParsedComponents = require('../../result').ParsedComponents;
 
 var FIRST_REG_PATTERN  = new RegExp("(^|\\s|T)" +
-    "(?:(?:at|from)\\s*)??" + 
-    "(\\d{1,4}|noon|midnight|evening)" + 
+    "(?:\\s*(evening)\\s*)?" +     
+    "(?:(?:at|from)\\s*)??" +
+    "(?:\\s*(evening)\\s*)?" + 
+    "(\\d{1,4}|noon|midnight)" + 
     "(?:" + 
         "(?:\\.|\\:|\\：)(\\d{1,2})" + 
         "(?:" + 
@@ -21,7 +23,9 @@ var FIRST_REG_PATTERN  = new RegExp("(^|\\s|T)" +
 
 
 var SECOND_REG_PATTERN = new RegExp("^\\s*" + 
+    "(?:\\s*(evening)\\s*)?" + 
     "(\\-|\\–|\\~|\\〜|to|upto|until|till|\\?)\\s*" + 
+    "(?:\\s*(evening)\\s*)?" + 
     "(\\d{1,4})" +
     "(?:" + 
         "(?:\\.|\\:|\\：)(\\d{1,2})" + 
@@ -32,10 +36,12 @@ var SECOND_REG_PATTERN = new RegExp("^\\s*" +
     "(?:\\s*(A\\.M\\.|P\\.M\\.|AM?|PM?))?" + 
     "(?=\\W|$)", 'i');
 
-var HOUR_GROUP    = 2;
-var MINUTE_GROUP  = 3;
-var SECOND_GROUP  = 4;
-var AM_PM_HOUR_GROUP = 5;
+var EVENING_GROUP      = 2;
+var EVENING_GROUP_2    = 3;
+var HOUR_GROUP         = 4;
+var MINUTE_GROUP       = 5;
+var SECOND_GROUP       = 6;
+var AM_PM_HOUR_GROUP   = 7;
 
 
 exports.Parser = function ENTimeExpressionParser(){
@@ -62,6 +68,10 @@ exports.Parser = function ENTimeExpressionParser(){
         var minute = 0;
         var meridiem = -1;
 
+        if ((match[EVENING_GROUP] && match[EVENING_GROUP].toLowerCase() == "evening") || (match[EVENING_GROUP_2] && match[EVENING_GROUP_2].toLowerCase() == "evening")) {
+            match[AM_PM_HOUR_GROUP] = "pm";
+        }
+
         // ----- Second
         if(match[SECOND_GROUP] != null){ 
             var second = parseInt(match[SECOND_GROUP]);
@@ -77,8 +87,6 @@ exports.Parser = function ENTimeExpressionParser(){
         } else if (match[HOUR_GROUP].toLowerCase() == "midnight") {
             meridiem = 0; 
             hour = 0;
-        } else if (match[HOUR_GROUP].toLowerCase() == "evening") {
-            match[AM_PM_HOUR_GROUP] = "pm";
         } else {
             hour = parseInt(match[HOUR_GROUP]);
         }
