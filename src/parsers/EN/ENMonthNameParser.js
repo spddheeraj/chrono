@@ -80,9 +80,9 @@ exports.Parser = function ENMonthNameParser(){
             if( Math.abs(nextYear.diff(moment(ref))) < Math.abs(refMoment.diff(moment(ref))) ){  
                 refMoment = nextYear;
             }
-            else if( Math.abs(lastYear.diff(moment(ref))) < Math.abs(refMoment.diff(moment(ref))) ){ 
+            /*else if( Math.abs(lastYear.diff(moment(ref))) < Math.abs(refMoment.diff(moment(ref))) ){ 
                 refMoment = lastYear;
-            }
+            }*/
 
             result.start.imply('day', day);
             result.start.assign('month', month);
