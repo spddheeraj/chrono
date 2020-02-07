@@ -123,6 +123,8 @@ exports.Parser = function ENMonthNameLittleEndianParser(){
 
             result.end = result.start.clone();
             result.end.assign('day', endDate);
+            result.endText = match[DATE_TO_GROUP];
+            result.startText = match[DATE_GROUP];
         }
 
         result.tags['ENMonthNameLittleEndianParser'] = true;

@@ -94,6 +94,8 @@ exports.Refiner = function ENMergeDateRangeRefiner() {
         }
         
         fromResult.end = toResult.start;
+        fromResult.startText = fromResult.text;
+        fromResult.endText = toResult.text;
 
         
 
