@@ -173,7 +173,7 @@ exports.Parser = function ENTimeExpressionParser(){
             result.end.assign('second', second);
         }
 
-        hour = parseInt(match[2]);
+        hour = parseInt(match[HOUR_GROUP]);
         
         // ----- Minute
         if (match[MINUTE_GROUP]!= null) {
