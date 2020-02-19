@@ -238,6 +238,8 @@ exports.Parser = function ENTimeExpressionParser(){
                 }
             }
         }
+        result.startText = result.text.replace(new RegExp("^(?:at|from)\\s*", "gi"), "");
+        result.endText = match[0].replace(new RegExp("^\\s*(\\-|\\–|\\~|\\〜|to|upto|until|till|\\?)\\s*", "gi"), "");
 
         result.text = result.text + match[0];
         result.end.assign('hour', hour);
