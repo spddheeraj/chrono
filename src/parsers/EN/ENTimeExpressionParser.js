@@ -244,6 +244,9 @@ exports.Parser = function ENTimeExpressionParser(){
         result.text = result.text + match[0];
         result.end.assign('hour', hour);
         result.end.assign('minute', minute);
+        if(result.start && result.start.knownValues && Object.keys(result.start.knownValues).length === 2 && result.start.knownValues.hour && result.start.knownValues.minute === 0){
+            return null;
+        }
         if (meridiem >= 0) {
             result.end.assign('meridiem', meridiem);
         } else {
