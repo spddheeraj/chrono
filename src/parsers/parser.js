@@ -58,6 +58,7 @@ exports.ENDeadlineFormatParser = require('./EN/ENDeadlineFormatParser').Parser;
 exports.ENRelativeDateFormatParser = require('./EN/ENRelativeDateFormatParser').Parser;
 exports.ENMonthNameLittleEndianParser = require('./EN/ENMonthNameLittleEndianParser').Parser;
 exports.ENMonthNameMiddleEndianParser = require('./EN/ENMonthNameMiddleEndianParser').Parser;
+exports.ENYearFirstParser = require('./EN/ENYearFirstParser').Parser;
 exports.ENMonthNameParser = require('./EN/ENMonthNameParser').Parser;
 exports.ENSlashDateFormatParser = require('./EN/ENSlashDateFormatParser').Parser;
 exports.ENSlashDateFormatStartWithYearParser = require('./EN/ENSlashDateFormatStartWithYearParser').Parser;

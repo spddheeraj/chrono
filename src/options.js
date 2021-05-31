@@ -124,6 +124,7 @@ exports.en = function(config) {
             new parser.ENDeadlineFormatParser(config),
             new parser.ENMonthNameLittleEndianParser(config),
             new parser.ENMonthNameMiddleEndianParser(config),
+            new parser.ENYearFirstParser(config),
             new parser.ENMonthNameParser(config),
             new parser.ENSlashDateFormatParser(config),
             new parser.ENSlashDateFormatStartWithYearParser(config),
