@@ -4766,6 +4766,7 @@ exports.en = function(config) {
             new parser.ENDeadlineFormatParser(config),
             new parser.ENMonthNameLittleEndianParser(config),
             new parser.ENMonthNameMiddleEndianParser(config),
+            new parser.ENYearFirstParser(config),
             new parser.ENMonthNameParser(config),
             new parser.ENSlashDateFormatParser(config),
             new parser.ENSlashDateFormatStartWithYearParser(config),
@@ -10201,6 +10202,7 @@ exports.ENDeadlineFormatParser = require('./EN/ENDeadlineFormatParser').Parser;
 exports.ENRelativeDateFormatParser = require('./EN/ENRelativeDateFormatParser').Parser;
 exports.ENMonthNameLittleEndianParser = require('./EN/ENMonthNameLittleEndianParser').Parser;
 exports.ENMonthNameMiddleEndianParser = require('./EN/ENMonthNameMiddleEndianParser').Parser;
+exports.ENYearFirstParser = require('./EN/ENYearFirstParser').Parser;
 exports.ENMonthNameParser = require('./EN/ENMonthNameParser').Parser;
 exports.ENSlashDateFormatParser = require('./EN/ENSlashDateFormatParser').Parser;
 exports.ENSlashDateFormatStartWithYearParser = require('./EN/ENSlashDateFormatStartWithYearParser').Parser;
